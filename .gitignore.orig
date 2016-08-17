@@ -1,9 +1,0 @@
-# ignore folders
-.idea/
-out/
-SbtHome.iml
-<<<<<<< HEAD
-=======
-Test2.iml
-src/com/
->>>>>>> 63ec1b6b49c5bbdf53bb93743ae883e01ddb0cf0
