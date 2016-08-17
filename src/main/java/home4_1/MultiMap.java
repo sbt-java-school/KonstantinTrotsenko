@@ -10,5 +10,7 @@ public class MultiMap {
     public static void main(String[] args) {
         HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
         ArrayList<Object> arrayList = new ArrayList<>();
+        int c = 0;
+        int b = 1;
     }
 }
