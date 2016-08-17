@@ -1,0 +1,4 @@
+# ignore folders
+.idea/
+out/
+SbtHome.iml
