@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class MultiMap {
     public static void main(String[] args) {
+        HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
         ArrayList<Object> arrayList = new ArrayList<>();
     }
 }
