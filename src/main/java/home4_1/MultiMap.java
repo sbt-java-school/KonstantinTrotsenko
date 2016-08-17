@@ -1,10 +1,12 @@
 package home4_1;
 
+import java.util.ArrayList;
+
 /**
  * Created by Airo on 17.08.2016.
  */
 public class MultiMap {
     public static void main(String[] args) {
-        
+        ArrayList<Object> arrayList = new ArrayList<>();
     }
 }
