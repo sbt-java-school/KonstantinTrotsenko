@@ -12,7 +12,7 @@ import java.util.*;
  * @autor Trotsenko Konstantin
  * @see MyMultiMap
  */
-public class ApplicationWithMyMulriList {
+public class ApplicationWithMyMultiMap {
     /**
      * Карата для сортировки по Type
      */
@@ -23,7 +23,7 @@ public class ApplicationWithMyMulriList {
      *
      * @param truckDao объект класса имплиментирующего интерфейс TruckDao
      */
-    public ApplicationWithMyMulriList(TruckDao truckDao) {
+    public ApplicationWithMyMultiMap(TruckDao truckDao) {
         List<Truck> list = truckDao.list();
         for (Truck truck : list) {
             TruckType type = truck.getType();
@@ -50,7 +50,7 @@ public class ApplicationWithMyMulriList {
         }
 
         TruckDao truckDao = (TruckDao) new TruckDaoInMemoryImpl();
-        ApplicationWithMyMulriList application = new ApplicationWithMyMulriList(truckDao);
+        ApplicationWithMyMultiMap application = new ApplicationWithMyMultiMap(truckDao);
 
         TruckType type = TruckType.valueOf(args[0]);
 
