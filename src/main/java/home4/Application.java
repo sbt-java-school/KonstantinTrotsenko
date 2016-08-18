@@ -50,6 +50,7 @@ public class Application {
      *
      * @param truckId Id объекта для поиска
      * @return объект truck с искомым Id
+     * @throws IllegalArgumentException исключение если truck не найден по Id
      */
     public Truck getTruckById(long truckId) {
         Truck truck = truckRegistryById.get(truckId);
@@ -64,6 +65,7 @@ public class Application {
      *
      * @param type type объекта для поиска
      * @return список объектов trucks с искомым type
+     * @throws IllegalArgumentException исключение если truck не найден по type
      */
     public List<Truck> getTruckByType(TruckType type) {
         List<Truck> trucks = truckRegistryByType.get(type);

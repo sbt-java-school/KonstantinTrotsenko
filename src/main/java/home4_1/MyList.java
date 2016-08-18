@@ -1,13 +1,16 @@
 package home4_1;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 
 /**
- * Created by Airo on 17.08.2016.
+ * Интерфейс MyList с заданными методами
+ *
+ * @version 1.0
+ * @autor Trotsenko Konstantin
  */
 public interface MyList<E> {
+
     boolean add(E e);
 
     void add(int index, E element);

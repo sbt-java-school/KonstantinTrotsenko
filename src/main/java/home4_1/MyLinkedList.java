@@ -3,12 +3,16 @@ package home4_1;
 import java.util.*;
 
 /**
- * Created by Airo on 17.08.2016.
+ * Класс MyLinkedList руализующий интерфейс MyList
+ *
+ * @version 1.0
+ * @autor Trotsenko Konstantin
+ * @see LinkedList
  */
 public class MyLinkedList<E> implements MyList<E> {
 
 
-    /*public static void main(String[] args) {
+   /* public static void main(String[] args) {
         List<String> list = new LinkedList<>();
         list.add("f");
         list.add(1, "e");
@@ -120,19 +124,23 @@ public class MyLinkedList<E> implements MyList<E> {
         checkElementIndex(index);
         return node(index).item;
     }
+
     private void checkElementIndex(int index) {
         if (!isElementIndex(index))
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
     }
+
     private boolean isElementIndex(int index) {
         return index >= 0 && index < size;
     }
+
     //********************************
     @Override
     public E remove(int index) {
         checkElementIndex(index);
         return unlink(node(index));
     }
+
     E unlink(Node<E> x) {
         // assert x != null;
         final E element = x.item;
@@ -158,6 +166,7 @@ public class MyLinkedList<E> implements MyList<E> {
         modCount++;
         return element;
     }
+
     //********************************
     @Override
     public Iterator<E> iterator() {
@@ -169,6 +178,7 @@ public class MyLinkedList<E> implements MyList<E> {
     public boolean addAll(Collection<? extends E> c) {
         return addAll(size, c);
     }
+
     public boolean addAll(int index, Collection<? extends E> c) {
         checkPositionIndex(index);
 
