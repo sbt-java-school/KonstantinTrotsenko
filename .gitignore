@@ -2,3 +2,7 @@
 .idea/
 out/
 SbtHome.iml
+_windows/
+inspection/
+diff.xml
+editor.xml

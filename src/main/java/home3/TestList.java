@@ -15,7 +15,6 @@ public class TestList {
      * Точка входа в класс
      *
      * @param args Массив строковых аргументов
-     * @throws Exception Исключений не выдает
      */
     public static void main(String[] args) {
         /**

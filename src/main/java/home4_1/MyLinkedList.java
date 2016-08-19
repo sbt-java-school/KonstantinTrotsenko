@@ -12,7 +12,7 @@ import java.util.*;
 public class MyLinkedList<E> implements MyList<E> {
 
 
-   /* public static void main(String[] args) {
+   /*public static void main(String[] args) {
         List<String> list = new LinkedList<>();
         list.add("f");
         list.add(1, "e");
@@ -24,8 +24,8 @@ public class MyLinkedList<E> implements MyList<E> {
         Integer integer = new Integer();
         list.co
         Collections.add
-    }*/
-
+    }
+*/
     transient int size = 0;
 
     transient MyLinkedList.Node<E> first;
