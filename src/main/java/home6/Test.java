@@ -3,7 +3,10 @@ package home6;
 import java.io.Serializable;
 
 /**
- * Created by Airo on 20.08.2016.
+ * Class for tests
+ *
+ * @version 1.0
+ * @autor Trotsenko Konstantin
  */
 public class Test {
 
