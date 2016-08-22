@@ -25,6 +25,8 @@ public class Test {
     class TestD extends TestC implements Serializable, Cloneable {
         private int a = 0;
         private int b = 0;
+        private static final String MONDAY = "MONDAY";
+        public static final String YEAR = "HOUR";
 
         public TestD(int a) {
             this.a = a;
