@@ -1,17 +1,17 @@
 package home8;
 
-
-import java.lang.reflect.Proxy;
-import java.math.BigInteger;
-
+/**
+ * Main class to test
+ *
+ * @version 1.0
+ * @autor Trotsenko Konstantin
+ */
 public class Main {
     public static void main(String[] args) {
         ICalculator calculator = new Calculator();
-        ICalculator proxyCalculator = (ICalculator) Proxy.newProxyInstance(Calculator.class.getClassLoader(),
-                Calculator.class.getInterfaces(),new ProxyUtils(calculator));
-        BigInteger fact = proxyCalculator.getFact(20);
-        int fib = proxyCalculator.getFib(30);
-        System.out.println(fact);
-        System.out.println(fib);
+        ICalculator proxyCalculator = (ICalculator) ProxyUtils.makeCached(calculator);
+        System.out.println(proxyCalculator.getFact(20));
+        System.out.println(proxyCalculator.getFact(20));
+        System.out.println(proxyCalculator.getFib(30));
     }
 }
