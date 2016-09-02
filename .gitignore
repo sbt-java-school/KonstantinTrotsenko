@@ -1,7 +1,11 @@
 # ignore folders
 .idea/
 out/
+!*.iml
 SbtHome.iml
 !*.xml
 _windows/
 inspection/
+core/core.iml
+util/core (1).iml
+webapp/core (2).iml
