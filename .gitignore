@@ -6,6 +6,10 @@ SbtHome.iml
 !*.xml
 _windows/
 inspection/
-core/core.iml
-util/core (1).iml
-webapp/core (2).iml
+home9/home9.iml
+home99/util/util.iml
+home99/webapp/webapp.iml
+
+/home/home.iml
+/target/
+/home9/target/
