@@ -3,7 +3,7 @@ package home9;
 import java.util.Iterator;
 
 /**
- * Inteface to create Iteterator
+ * Interface to create Iteterator
  *
  * @version 1.0
  * @autor Trotsenko Konstantin
