@@ -11,3 +11,14 @@ SimpleThreadPool - реализация ThreadPool с использование
 В src/main/java/home14 содержиться:  
 BlockingQueue - класс реализующий блокирующую очередь  
 SomethingTask - класс симулирующий какую либо работу  
+TaskExecutor - класс выолняющий задачу из очереди
+ThreadPool - реализация ThreadPool без использования Executors.class
+В src/test/java/home14 содержиться:  
+ThreadPoolTest - класс для тестирования работоспособности ThreadPool  
+
+***Итог***
+
+Реализовал простой ThreadPool двумя способами, с использованием Executors.class
+и без него
+ 
+
