@@ -3,7 +3,7 @@ package home13;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Class
+ * Class to create thread and do work
  *
  * @version 1.0
  * @autor Trotsenko Konstantin
@@ -22,6 +22,9 @@ public class WorkerThread implements Runnable {
         System.out.println(Thread.currentThread().getName()+" Stop.");
     }
 
+    /**
+     * Method simulate smt work
+     */
     private void doCommand() {
         try {
             TimeUnit.SECONDS.sleep(2L);

@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Class
+ * Class create Thread Pool with Executors.class
  *
  * @version 1.0
  * @autor Trotsenko Konstantin
