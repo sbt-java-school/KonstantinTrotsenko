@@ -6,11 +6,11 @@
 ***Реализация***
 
 Модуль home11 входит в состав родительского проекта  
-В src/main/java содержиться:  
+В src/main/java/home11 содержиться:  
 Plugin - интерфейс для реализации плагинов  
 PluginManager - реализация загрузчика плагинов, с переопределением метода loadClass  
 PluginManagerWithStandartURLCL - реализация загрузчика плагинов с использованием стандартного URLCL  
-В src/test/java содержиться:  
+В src/test/java/home11 содержиться:  
 PluginManagerTest - класс для тестирования работоспособности PluginManager  
 PluginManagerWithStandartURLCLTest - класс для тестирования работоспособности PluginManagerWithStandartURLCL    
 

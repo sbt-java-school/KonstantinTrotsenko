@@ -6,9 +6,9 @@
 ***Реализация***
 
 Модуль home10 входит в состав родительского проекта  
-В src/main/java содержиться:  
+В src/main/java/home10 содержиться:  
 Book - класс реализующий Serialization Proxy Pattern  
-В src/test/java содержиться:  
+В src/test/java/home10 содержиться:  
 BookTest - класс для тестирования работоспособности Serialization Proxy Pattern  
 
 ***Итог***
