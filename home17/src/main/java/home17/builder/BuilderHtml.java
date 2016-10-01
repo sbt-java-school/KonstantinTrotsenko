@@ -20,11 +20,16 @@ public class BuilderHtml implements Builder {
         double totals = 0;
         for (Object payment : results) {
             // process each row of query results
-            resultingHtml.append("<tr>"); // add row start tag
-            resultingHtml.append("<td>").append(((SalaryPayment) payment).getName()).append("</td>"); // appending employee name
-            resultingHtml.append("<td>").append(((SalaryPayment) payment).getSalary()).append("</td>"); // appending employee salary for period
-            resultingHtml.append("</tr>"); // add row end tag
-            totals += ((SalaryPayment) payment).getSalary(); // add salary to totals
+            // add row start tag
+            resultingHtml.append("<tr>");
+            // appending employee name
+            resultingHtml.append("<td>").append(((SalaryPayment) payment).getName()).append("</td>");
+            // appending employee salary for period
+            resultingHtml.append("<td>").append(((SalaryPayment) payment).getSalary()).append("</td>");
+            // add row end tag
+            resultingHtml.append("</tr>");
+            // add salary to totals
+            totals += ((SalaryPayment) payment).getSalary();
         }
         resultingHtml.append("<tr><td>Total</td><td>").append(totals).append("</td></tr>");
         resultingHtml.append("</table></body></html>");

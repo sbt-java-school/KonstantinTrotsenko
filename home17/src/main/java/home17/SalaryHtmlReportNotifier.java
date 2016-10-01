@@ -1,5 +1,6 @@
 package home17;
 
+import com.sun.istack.internal.NotNull;
 import home17.builder.Builder;
 import home17.dao.SalaryPaymentDao;
 import home17.sender.Sender;
@@ -28,9 +29,12 @@ public class SalaryHtmlReportNotifier {
         this.salaryPayment = salaryPayment;
     }
 
-    public void generateAndSendHtmlSalaryReport(String departmentId, LocalDate dateFrom, LocalDate dateTo, String recipients) {
-        List listOfSalaryPayments = salaryPayment.getSalaryPayments(departmentId, dateFrom, dateTo);
-        StringBuilder resultingHtml = builder.buildSalaryPaymentReport(listOfSalaryPayments);
-        sender.sendReport(recipients, resultingHtml);
+    public void generateAndSendHtmlSalaryReport(String departmentId, LocalDate dateFrom,
+                                                LocalDate dateTo, String recipients) {
+        if (departmentId != null && dateFrom != null && dateTo != null && recipients != null) {
+            List listOfSalaryPayments = salaryPayment.getSalaryPayments(departmentId, dateFrom, dateTo);
+            StringBuilder resultingHtml = builder.buildSalaryPaymentReport(listOfSalaryPayments);
+            sender.sendReport(recipients, resultingHtml);
+        } else throw new SalaryHtmlReportNotifierException("Wrong arguments");
     }
 }

@@ -23,7 +23,6 @@
 
     <properties>
         <junit.version>4.8.2</junit.version>
-        <mokito.version>1.10.19</mokito.version>
     </properties>
 
     <dependencies>
@@ -31,14 +30,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>${mokito.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
