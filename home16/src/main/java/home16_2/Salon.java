@@ -15,10 +15,8 @@ public class Salon {
 
     public Salon(int chairsForWait, int hairdressers) {
         if (chairsForWait <= 0 || hairdressers <= 0) {
-            throw new IllegalArgumentException();
+            throw new BusinessException("Illegal argument Exception");
         }
-        Objects.nonNull(chairsForWait);
-        Objects.nonNull(hairdressers);
         queueChairs = new ArrayBlockingQueue(chairsForWait);
         String hairdresserName = null;
         Hairdresser hairdresser = null;
@@ -36,7 +34,9 @@ public class Salon {
      * @param clientNumber
      */
     public void startGoingClient(int clientNumber) {
-        Objects.nonNull(clientNumber);
+        if (clientNumber >= 0) {
+            throw new BusinessException("Illegal argument Exception");
+        }
         String clientName = null;
         Client client = null;
         for (int count = 0; count < clientNumber; count++) {
