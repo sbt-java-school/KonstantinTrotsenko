@@ -23,3 +23,5 @@ home9/home9.iml
 /home17/target/
 /home9/target/
 /home16/src/main/java/home16_2/Main.java
+/out/
+/.gitignore
