@@ -8,10 +8,10 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 /**
- * Class FortuneTellerClient, connect wit FortuneTellerServer
+ * Class FortuneTellerClient, connect with FortuneTellerServer
  *
- * @vesion 1.0
- * @autor Trotsenko Konstantin
+ * @version 1.0
+ * @author Trotsenko Konstantin
  */
 public class FortuneTellerClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(FortuneTellerClient.class);

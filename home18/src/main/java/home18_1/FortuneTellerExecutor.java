@@ -7,13 +7,13 @@ import java.io.*;
 import java.net.Socket;
 
 /**
- * Class FortuneTellerExecutor thread to work with each client separately
+ * Class ChatServerExecutor thread to work with each client separately
  *
- * @vesion 1.0
- * @autor Trotsenko Konstantin
+ * @version 1.0
+ * @author Trotsenko Konstantin
  */
 public class FortuneTellerExecutor implements Runnable {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FortuneTellerServer.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FortuneTellerExecutor.class);
     private final int quizNumber;
     private final Socket socket;
     private String line;
@@ -55,6 +55,11 @@ public class FortuneTellerExecutor implements Runnable {
             LOGGER.error("Exception in executor", e);
         } finally {
             LOGGER.info("Connection Closing..");
+            try {
+                socket.close();
+            } catch (IOException e) {
+                LOGGER.error("Socket close", e);
+            }
         }
     }
 }

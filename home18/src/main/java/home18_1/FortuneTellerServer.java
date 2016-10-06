@@ -9,10 +9,10 @@ import java.net.Socket;
 import java.util.Random;
 
 /**
- * Class FortuneTellerServer to create FortuneTellerExecutor fo each request
+ * Class FortuneTellerServer to create ChatServerExecutor fo each request
  *
- * @vesion 1.0
- * @autor Trotsenko Konstantin
+ * @version 1.0
+ * @author Trotsenko Konstantin
  */
 public class FortuneTellerServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(FortuneTellerServer.class);

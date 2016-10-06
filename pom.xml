@@ -33,6 +33,11 @@
                 </configuration>
             </plugin>
         </plugins>
+            <resources>
+                <resource>
+                    <directory>home18/src/main/resources</directory>
+                </resource>
+            </resources>
     </build>
 
     <properties>
