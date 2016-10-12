@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="380.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home19.application.ResultController">
+    <children>
+
+        <Label layoutX="131.0" layoutY="14.0" text="Result">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblName" layoutX="40.0" layoutY="60.0" prefHeight="20.0" prefWidth="80.0" text="Имя" />
+        <Label fx:id="lblNameSet" layoutX="180.0" layoutY="60.0" prefHeight="20.0" prefWidth="100.0" text="Имя" />
+
+        <Label fx:id="lblIncome" layoutX="40.0" layoutY="100.0" prefHeight="20.0" prefWidth="80.0" text="Доход" />
+        <Label fx:id="lblIncomeSet" layoutX="180.0" layoutY="100.0" prefHeight="20.0" prefWidth="100.0" text="Доход" />
+
+        <Label fx:id="lblPayment" layoutX="40.0" layoutY="140.0" prefHeight="20.0" prefWidth="80.0" text="Платеж" />
+        <Label fx:id="lblPaymentSet" layoutX="180.0" layoutY="140.0" prefHeight="20.0" prefWidth="100.0" text="Платеж" />
+
+        <Label fx:id="lblFactorCredit" layoutX="40.0" layoutY="180.0" prefHeight="20.0" prefWidth="120.0" text="Фактор по кредиту" />
+        <Label fx:id="lblFactorCreditSet" layoutX="180.0" layoutY="180.0" prefHeight="20.0" prefWidth="100.0" text="Фактор по кредиту" />
+
+        <Label fx:id="lblFactorClient" layoutX="40.0" layoutY="220.0" prefHeight="20.0" prefWidth="120.0" text="Фактор по клиенту" />
+        <Label fx:id="lblFactorClientSet" layoutX="180.0" layoutY="220.0" prefHeight="20.0" prefWidth="100.0" text="Фактор по клиенту" />
+
+        <Label fx:id="lblFactorTotal" layoutX="40.0" layoutY="260.0" prefHeight="20.0" prefWidth="100.0" text="Общий фактор" />
+        <Label fx:id="lblFactorTotalSet" layoutX="180.0" layoutY="260.0" prefHeight="20.0" prefWidth="100.0" text="Общий фактор" />
+
+        <Label fx:id="lblMark" layoutX="40.0" layoutY="300.0" prefHeight="20.0" prefWidth="100.0" text="Оценка" />
+        <Label fx:id="lblMarkSet" layoutX="180.0" layoutY="300.0" prefHeight="20.0" prefWidth="200.0" text="Оценка" />
+    </children>
+</AnchorPane>

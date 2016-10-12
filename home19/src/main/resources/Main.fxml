@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<?import home19.application.textFields.NumberTextField?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<AnchorPane prefHeight="600.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="home19.application.MainController">
+    <children>
+
+        <Label layoutX="135.0" layoutY="14.0" text="Scoring system">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TextField fx:id="txtName" layoutX="180.0" layoutY="60.0" prefHeight="25.0" prefWidth="150.0"/>
+        <Label fx:id="lblName" layoutX="40.0" layoutY="60.0" prefHeight="20.0" prefWidth="40.0" text="Имя"/>
+
+        <ComboBox fx:id="cbAge" layoutX="180.0" layoutY="100.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="до 25"/>
+                    <String fx:value="25-35"/>
+                    <String fx:value="35-50"/>
+                    <String fx:value="50 и более"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="до 25"/>
+            </value>
+        </ComboBox>
+        <Label layoutX="40.0" layoutY="100.0" text="Возраст"/>
+
+        <ComboBox fx:id="cbCity" layoutX="180.0" layoutY="140.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Москва"/>
+                    <String fx:value="Новосибирск"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Новосибирск"/>
+            </value>
+        </ComboBox>
+        <Label layoutX="40.0" layoutY="140.0" text="Город"/>
+
+        <ComboBox fx:id="cbMaritalStatus" layoutX="180.0" layoutY="180.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Холост (не замужем)"/>
+                    <String fx:value="Женат (замужем)"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Женат (замужем)"/>
+            </value>
+        </ComboBox>
+        <Label layoutX="40.0" layoutY="180.0" text="Семейное положение"/>
+
+        <ComboBox fx:id="cbChildren" layoutX="180.0" layoutY="220.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Нет детей"/>
+                    <String fx:value="1"/>
+                    <String fx:value="2 и более"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Нет детей"/>
+            </value>
+        </ComboBox>
+        <Label layoutX="40.0" layoutY="220.0" text="Наличие детей"/>
+
+        <ComboBox fx:id="cbDependents" layoutX="180.0" layoutY="260.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Нет иждивенцев"/>
+                    <String fx:value="1"/>
+                    <String fx:value="2 и более"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Нет иждивенцев"/>
+            </value>
+        </ComboBox>
+        <Label layoutX="40.0" layoutY="260.0" text="Наличие иждивенцев"/>
+
+        <ComboBox fx:id="cbOwnership" layoutX="180.0" layoutY="300.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Нет"/>
+                    <String fx:value="Есть"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Нет"/>
+            </value>
+        </ComboBox>
+        <Label layoutX="40.0" layoutY="300.0" text="Недвижимость"/>
+
+        <ComboBox fx:id="cbCar" layoutX="180.0" layoutY="340.0" prefWidth="150.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Нет"/>
+                    <String fx:value="Есть"/>
+                </FXCollections>
+            </items>
+            <value>
+                <String fx:value="Нет"/>
+            </value>
+        </ComboBox>
+        <Label layoutX="40.0" layoutY="340.0" text="Автомобиль"/>
+
+        <NumberTextField fx:id="txtSalary" layoutX="180.0" layoutY="420.0" prefHeight="25.0" prefWidth="150.0"/>
+        <Label fx:id="lblSalary" layoutX="40.0" layoutY="420.0" prefHeight="20.0" prefWidth="160.0" text="Зарплата, pублей"/>
+
+        <NumberTextField fx:id="txtAmountOfCredit" layoutX="180.0" layoutY="460.0" prefHeight="25.0" prefWidth="150.0"/>
+        <Label fx:id="lblAmountOfCredit" layoutX="40.0" layoutY="460.0" prefHeight="20.0" prefWidth="160.0"
+               text="Размер кредита, рублей"/>
+
+        <NumberTextField fx:id="txtPeriodMonth" layoutX="180.0" layoutY="500.0" prefHeight="25.0" prefWidth="150.0"/>
+        <Label fx:id="lblPeriodMonth" layoutX="40.0" layoutY="500.0" prefHeight="20.0" prefWidth="120.0"
+               text="Колличество месяцев"/>
+
+
+        <Button fx:id="btnStart" layoutX="300.0" layoutY="550.0" mnemonicParsing="false" onAction="#startMainController"
+                text="Start"/>
+    </children>
+</AnchorPane>
