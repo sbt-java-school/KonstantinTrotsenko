@@ -44,7 +44,7 @@ public class BookTest {
 
     @Test
     public void testProxySerializationObject() {
-        Assert.assertNotEquals(bookAfterSer, bookBeforeSer);
+        Assert.assertNotSame(bookAfterSer, bookBeforeSer);
     }
 
     @Test
