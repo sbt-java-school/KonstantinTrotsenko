@@ -8,15 +8,15 @@
 Для проверки использовался модуль home17  
 https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home17  
 
-![Первая проверка](https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home21/src/main/resources/before.jpg)   
+![Первая проверка](src/main/resources/before.jpg)   
 Первая проверка показала что есть один баг (не закрыт PreparedStatement)  
-![Баг](https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home21/src/main/resources/bug.jpg)   
+![Баг](src/main/resources/bug.jpg)   
 И имелись недочеты: неверное имя пакета, неверная проброска исключения,  
 необходимость указания интрефейса как функционального   
-![Недочеты](https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home21/src/main/resources/smells.jpg)   
+![Недочеты](src/main/resources/smells.jpg)   
 После исправления всех ошибок и недочетов была проведена новая проверка,  
 которая не выявила ничего.  
-![После исправления всех ошибок](https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home21/src/main/resources/after.jpg)       
+![После исправления всех ошибок](src/main/resources/after.jpg)       
 
 ***Итог***
 
