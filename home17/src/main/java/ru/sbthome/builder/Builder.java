@@ -1,4 +1,4 @@
-package home17.builder;
+package ru.sbthome.builder;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import java.util.List;
  * @version 1.0
  * @autor Trotsenko Konstantin
  */
+@FunctionalInterface
 public interface Builder {
     StringBuilder buildSalaryPaymentReport(List results);
 }

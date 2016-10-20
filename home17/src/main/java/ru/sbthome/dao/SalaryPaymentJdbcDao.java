@@ -1,7 +1,7 @@
-package home17.dao;
+package ru.sbthome.dao;
 
-import home17.SalaryHtmlReportNotifierException;
-import home17.model.SalaryPayment;
+import ru.sbthome.SalaryHtmlReportNotifierException;
+import ru.sbthome.model.SalaryPayment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,12 +38,13 @@ public class SalaryPaymentJdbcDao implements SalaryPaymentDao {
             preparedStatement.setDate(3, new java.sql.Date(dateTo.toEpochDay()));
             // execute query and get the results
             ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement.close();
             while (resultSet.next()) {
                 listOfSalaryPayment.add(new SalaryPayment(resultSet.getLong("id"), resultSet.getString("name"),
                         resultSet.getDouble("salary")));
             }
         } catch (Exception e) {
-            throw new SalaryHtmlReportNotifierException("Exception into getSalaryPayments");
+            throw new SalaryHtmlReportNotifierException("Exception into getSalaryPayments", e);
         }
         return listOfSalaryPayment;
     }

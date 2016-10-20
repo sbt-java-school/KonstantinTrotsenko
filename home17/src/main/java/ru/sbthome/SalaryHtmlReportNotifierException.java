@@ -1,4 +1,4 @@
-package home17;
+package ru.sbthome;
 
 /**
  * Class to wrap RuntimeException
@@ -13,7 +13,6 @@ public class SalaryHtmlReportNotifierException extends RuntimeException {
 
     public SalaryHtmlReportNotifierException(String message) {
         super(message);
-        System.out.println(message);
     }
 
     public SalaryHtmlReportNotifierException(String message, Throwable cause) {

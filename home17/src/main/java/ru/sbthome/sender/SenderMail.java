@@ -1,6 +1,6 @@
-package home17.sender;
+package ru.sbthome.sender;
 
-import home17.SalaryHtmlReportNotifierException;
+import ru.sbthome.SalaryHtmlReportNotifierException;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
@@ -31,7 +31,7 @@ public class SenderMail implements Sender {
             // send the message
             mailSender.send(message);
         } catch (Exception e) {
-            throw new SalaryHtmlReportNotifierException("Exception into sendReport");
+            throw new SalaryHtmlReportNotifierException("Exception into sendReport", e);
         }
     }
 }

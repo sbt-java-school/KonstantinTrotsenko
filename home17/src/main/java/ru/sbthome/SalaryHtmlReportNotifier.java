@@ -1,9 +1,8 @@
-package home17;
+package ru.sbthome;
 
-import com.sun.istack.internal.NotNull;
-import home17.builder.Builder;
-import home17.dao.SalaryPaymentDao;
-import home17.sender.Sender;
+import ru.sbthome.builder.Builder;
+import ru.sbthome.dao.SalaryPaymentDao;
+import ru.sbthome.sender.Sender;
 
 import java.time.LocalDate;
 import java.util.List;

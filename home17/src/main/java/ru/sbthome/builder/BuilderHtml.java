@@ -1,6 +1,6 @@
-package home17.builder;
+package ru.sbthome.builder;
 
-import home17.model.SalaryPayment;
+import ru.sbthome.model.SalaryPayment;
 
 import java.util.List;
 

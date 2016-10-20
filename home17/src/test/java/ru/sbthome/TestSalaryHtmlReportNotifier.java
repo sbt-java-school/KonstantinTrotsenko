@@ -1,11 +1,11 @@
-package home17;
+package ru.sbthome;
 
-import home17.builder.Builder;
-import home17.builder.BuilderHtml;
-import home17.dao.SalaryPaymentDao;
-import home17.dao.SalaryPaymentJdbcDao;
-import home17.sender.Sender;
-import home17.sender.SenderMail;
+import ru.sbthome.builder.Builder;
+import ru.sbthome.builder.BuilderHtml;
+import ru.sbthome.dao.SalaryPaymentDao;
+import ru.sbthome.dao.SalaryPaymentJdbcDao;
+import ru.sbthome.sender.Sender;
+import ru.sbthome.sender.SenderMail;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -16,12 +16,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;

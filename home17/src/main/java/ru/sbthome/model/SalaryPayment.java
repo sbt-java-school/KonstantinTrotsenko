@@ -1,4 +1,4 @@
-package home17.model;
+package ru.sbthome.model;
 
 /**
  * Simple salary payment

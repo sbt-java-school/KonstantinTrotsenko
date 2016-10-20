@@ -1,4 +1,4 @@
-package home17.dao;
+package ru.sbthome.dao;
 
 
 import java.time.LocalDate;
@@ -10,6 +10,7 @@ import java.util.List;
  * @version 1.0
  * @autor Trotsenko Konstantin
  */
+@FunctionalInterface
 public interface SalaryPaymentDao {
     List getSalaryPayments(String departmentId, LocalDate dateFrom, LocalDate dateTo);
 }
