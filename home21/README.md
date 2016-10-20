@@ -9,7 +9,7 @@
 https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home17  
 
 ![Первая проверка](https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home21/src/main/resources/before.jpg)   
-Первая проверка показала что есть один баг (не закрыт PreparedStatement)
+Первая проверка показала что есть один баг (не закрыт PreparedStatement)  
 ![Баг](https://github.com/sbt-java-school/KonstantinTrotsenko/tree/master/home21/src/main/resources/bug.jpg)   
 И имелись недочеты: неверное имя пакета, неверная проброска исключения,  
 необходимость указания интрефейса как функционального   
