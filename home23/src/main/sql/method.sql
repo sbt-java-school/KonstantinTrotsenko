@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS Method(
+    id NUMBER (18) NOT NULL IDENTITY ,
+    method LONGBLOB NOT NULL,
+    arguments LONGBLOB NOT NULL,
+    results LONGBLOB NOT NULL);

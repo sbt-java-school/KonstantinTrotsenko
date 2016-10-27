@@ -25,7 +25,7 @@ public class DatabaseUpdater {
         new DatabaseUpdater().executeScript("C:/Users/Airo/IdeaProjects/SbtHome/home23/src/main/sql/user.sql");
     }
 
-    private void executeScript(String fileName) {
+    public void executeScript(String fileName) {
         try {
             String sqlScript = FileUtils.readFileToString(new File(fileName));
             executeSql(sqlScript);
