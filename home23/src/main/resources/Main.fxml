@@ -46,7 +46,7 @@
 
         <Button fx:id="btnStart" layoutX="440.0" layoutY="380.0" mnemonicParsing="false" onAction="#startMainController"
                 text="Start"/>
-        <RadioButton fx:id="rbtnCreate" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" selected="true" onAction="#createUser" text="Create"/>
+        <RadioButton fx:id="rbtnCreate" layoutX="50.0" layoutY="350.0" mnemonicParsing="false" onAction="#createUser" text="Create"/>
         <RadioButton fx:id="rbtnUpdate" layoutX="150.0" layoutY="350.0" mnemonicParsing="false" onAction="#updateUser" text="Update"/>
         <RadioButton fx:id="rbtnDelete" layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleteUser" text="Delete"/>
     </children>

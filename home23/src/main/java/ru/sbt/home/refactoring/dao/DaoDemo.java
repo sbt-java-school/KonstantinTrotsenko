@@ -27,13 +27,14 @@ public class DaoDemo {
         userDao = new UserDao(jdbcTemplate);
     }
 
-    public void findByLogin(String login) {
+    public User findByLogin(String login) {
         User user = userDao.findByLogin(login);
         if (user != null) {
             LOGGER.info(user.toString());
         } else {
             LOGGER.info("User not found: " + login);
         }
+        return user;
     }
 
     public void createUser(String login, String password) {
