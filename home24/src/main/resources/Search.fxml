@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import ru.sbt.home.view.textFields.NumberTextField?>
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.home.view.searchbranch.SearchController">
+    <children>
+        <Label layoutX="230.0" layoutY="14.0" text="Рецепты">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <TableView fx:id="tableRecipes" layoutX="10.0" layoutY="40.0" prefHeight="300.0" prefWidth="480.0">
+            <columns>
+                <TableColumn fx:id="id" prefWidth="40.0" text="№"/>
+                <TableColumn fx:id="recipe" prefWidth="440.0" text="Название"/>
+            </columns>
+        </TableView>
+        <TextField fx:id="txtSearch" layoutX="10.0" layoutY="360.0" prefHeight="25.0" prefWidth="250.0"/>
+        <Button fx:id="btnSearch" layoutX="270.0" layoutY="360.0" mnemonicParsing="false" onAction="#search"
+                text="Поиск"/>
+        <NumberTextField fx:id="txtId" layoutX="330.0" layoutY="360.0" prefHeight="25.0" prefWidth="30.0"/>
+        <Button fx:id="btnChoice" layoutX="370.0" layoutY="360.0" mnemonicParsing="false" onAction="#choice"
+                text="Выбор"/>
+        <Button fx:id="btnDelete" layoutX="430.0" layoutY="360.0" mnemonicParsing="false" onAction="#delete"
+                text="Удалить"/>
+    </children>
+</AnchorPane>

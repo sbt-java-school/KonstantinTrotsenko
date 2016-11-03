@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="100.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.home.view.Message">
+    <children>
+
+        <Label layoutX="125.0" layoutY="14.0" text="Warning!">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="lblMessage" layoutX="10.0" layoutY="60.0" prefHeight="20.0" prefWidth="280.0" text="" />
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.home.view.MainController">
+    <children>
+        <Label fx:id="lblHello" layoutX="40.0" layoutY="14.0" text="Добро пожаловать">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+
+        <Button fx:id="btnSearch" layoutX="60.0" layoutY="70.0" mnemonicParsing="false" onAction="#search"
+                text="Поиск" minWidth="80"/>
+        <Button fx:id="btnCreate" layoutX="60.0" layoutY="120.0" mnemonicParsing="false" onAction="#create"
+                text="Создать" minWidth="80"/>
+        <Button fx:id="btnExit" layoutX="60.0" layoutY="170.0" mnemonicParsing="false" onAction="#exit"
+                text="Выход" minWidth="80"/>
+    </children>
+</AnchorPane>

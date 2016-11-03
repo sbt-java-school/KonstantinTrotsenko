@@ -23,6 +23,7 @@
         <module>home20</module>
         <module>home21</module>
         <module>home23</module>
+        <module>home24</module>
     </modules>
 
     <build>

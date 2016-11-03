@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<?import ru.sbt.home.view.textFields.NumberTextField?>
+<AnchorPane prefHeight="680.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.40"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.sbt.home.view.searchbranch.SearchControllerRedactor">
+    <children>
+        <Label layoutX="230.0" layoutY="15.0" text="Рецепт">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblRecipeName" layoutX="20.0" layoutY="40.0" text="Название рецепта">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblRecipeDescription" layoutX="20.0" layoutY="65.0" text="Описанние рецепта">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+
+        <TableView fx:id="tableRecipe" layoutX="10.0" layoutY="120.0" prefHeight="240.0" prefWidth="480.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="40.0" text="№"/>
+                <TableColumn fx:id="ingredientColumn" prefWidth="250.0" text="Ингредиент"/>
+                <TableColumn fx:id="countColumn" prefWidth="90.0" text="Кол-во"/>
+                <TableColumn fx:id="unitColumn" prefWidth="100.0" text="Ед. изм."/>
+            </columns>
+        </TableView>
+
+        <Label fx:id="lblId" layoutX="30.0" layoutY="470.0" text="Id">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblName" layoutX="90.0" layoutY="470.0" text="Название">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblCount" layoutX="270.0" layoutY="470.0" text="Кол-во">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblUnit" layoutX="375.0" layoutY="470.0" text="Ед. изм.">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblTitle" layoutX="30.0" layoutY="590.0" text="Название">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <Label fx:id="lblDescription" layoutX="30.0" layoutY="630.0" text="Описание">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Label>
+        <NumberTextField fx:id="txtId" layoutX="50.0" layoutY="470.0" prefHeight="25.0" prefWidth="30.0"/>
+        <TextField fx:id="txtIngredient" layoutX="160.0" layoutY="470.0" prefHeight="25.0" prefWidth="100.0"/>
+        <TextField fx:id="txtCount" layoutX="320.0" layoutY="470.0" prefHeight="25.0" prefWidth="50.0"/>
+        <TextField fx:id="txtUnit" layoutX="430.0" layoutY="470.0" prefHeight="25.0" prefWidth="50.0"/>
+        <TextField fx:id="txtName" layoutX="120.0" layoutY="590.0" prefHeight="25.0" prefWidth="200.0"/>
+        <TextField fx:id="txtDescription" layoutX="120.0" layoutY="630.0" prefHeight="25.0" prefWidth="200.0"/>
+        <Button fx:id="btnStart" layoutX="400.0" layoutY="640.0" mnemonicParsing="false" onAction="#start"
+                text="Выполнить"/>
+       <!-- <RadioButton fx:id="rbtnAdd" layoutX="50.0" layoutY="370.0" mnemonicParsing="false"
+                     onAction="#addIngredient" text="Добавить ингредиент"/>-->
+        <RadioButton fx:id="rbtnAddNew" layoutX="50.0" layoutY="400.0" mnemonicParsing="false"
+                     onAction="#addNewIngredient" text="Добавить новый ингредиент"/>
+        <RadioButton fx:id="rbtnUpdateIngredient" layoutX="250.0" layoutY="370.0" mnemonicParsing="false"
+                     onAction="#updateIngredient" text="Обновить ингредиент"/>
+        <RadioButton fx:id="rbtnUpdateDescription" layoutX="50.0" layoutY="430.0" mnemonicParsing="false"
+                     onAction="#updateDescription" text="Обновить описание"/>
+        <RadioButton fx:id="rbtnUpdateName" layoutX="250.0" layoutY="430.0" mnemonicParsing="false"
+                     onAction="#updateName" text="Обновить название"/>
+        <RadioButton fx:id="rbtnDelete" layoutX="250.0" layoutY="400.0" mnemonicParsing="false"
+                     onAction="#deleteIngredient" text="Удалить ингредиент"/>
+        <!--<ComboBox fx:id="cbIngredients" layoutX="160.0" layoutY="520.0" prefWidth="100.0"></ComboBox>-->
+    </children>
+</AnchorPane>
