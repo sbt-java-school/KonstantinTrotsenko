@@ -3,13 +3,13 @@ package ru.sbt.home.creationdb;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import ru.sbt.home.configuration.ApplicationConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Класс для создания базы данных
@@ -17,34 +17,33 @@ import java.sql.Statement;
  * @author Trotsenko Konstantin
  * @version 1.0
  */
+
+@Component
 public class DatabaseUpdater {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseUpdater.class);
+    private JdbcTemplate jdbcTemplate;
 
-    public static void main(String[] args) throws Exception {
-        new DatabaseUpdater().executeScript("C:/Users/Airo/IdeaProjects/SbtHome/home24/src/main/sql/cookbook.sql");
+    public DatabaseUpdater(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void executeScript(String fileName) {
+    public static void main(String[] args) throws Exception {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+        context.getBean(DatabaseUpdater.class).executeScript("home24/src/main/sql/cookbook.sql");
+
+    }
+
+    private void executeScript(String fileName) {
         try {
             String sqlScript = FileUtils.readFileToString(new File(fileName));
             executeSql(sqlScript);
-        } catch (SQLException e) {
-            throw new IllegalArgumentException("Bad script: " + fileName, e);
         } catch (IOException e) {
-            throw new IllegalArgumentException("Can't read file: " + fileName, e);
+            LOGGER.info("Can't read file: " + fileName, e);
         }
     }
 
-    private void executeSql(String sql) throws SQLException {
-        try (Connection connection =
-                     DriverManager.getConnection("jdbc:h2:C:/Users/Airo/IdeaProjects/SbtHome/home24/src/database/app");
-             Statement statement = connection.createStatement()) {
-            boolean execute = statement.execute(sql);
-            LOGGER.info("---------------------------------");
-            LOGGER.info("State:" + execute);
-            LOGGER.info("SQL: " + sql);
-            LOGGER.info("---------------------------------");
-        }
+    private void executeSql(String sql) {
+        jdbcTemplate.update(sql);
     }
 }

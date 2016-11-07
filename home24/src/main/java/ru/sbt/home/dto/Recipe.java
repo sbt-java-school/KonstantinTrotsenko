@@ -1,4 +1,4 @@
-package ru.sbt.home.core;
+package ru.sbt.home.dto;
 
 /**
  * Класс для создания рецептов (таблица Recipes)
@@ -10,9 +10,6 @@ public class Recipe {
     private Integer id;
     private String recipe;
     private String description;
-
-    public Recipe() {
-    }
 
     public Recipe(String recipe, String description) {
         this.recipe = recipe;
@@ -47,5 +44,24 @@ public class Recipe {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Recipe recipe1 = (Recipe) o;
+
+        if (!recipe.equals(recipe1.recipe)) return false;
+        return description != null ? description.equals(recipe1.description) : recipe1.description == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = recipe.hashCode();
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
     }
 }

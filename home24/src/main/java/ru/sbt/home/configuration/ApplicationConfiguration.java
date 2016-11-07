@@ -1,4 +1,4 @@
-package ru.sbt.home;
+package ru.sbt.home.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,12 +16,12 @@ import javax.sql.DataSource;
  * @version 1.0
  */
 @Configuration
-@ComponentScan
+@ComponentScan(basePackages = {"ru.sbt.home"})
 public class ApplicationConfiguration {
 
     @Bean
     public DataSource dataSource() {
-        return new DriverManagerDataSource("jdbc:h2:C:/Users/Airo/IdeaProjects/SbtHome/home24/src/database/app");
+        return new DriverManagerDataSource("jdbc:h2:./home24/src/database/app");
     }
 
     @Bean

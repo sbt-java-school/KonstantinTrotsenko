@@ -1,26 +1,26 @@
-package ru.sbt.home.view.searchbranch;
+package ru.sbt.home.view.search;
 
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.sbt.home.ApplicationConfiguration;
-import ru.sbt.home.core.CookbookSheetSimple;
-import ru.sbt.home.dao.Dao;
-import ru.sbt.home.view.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import ru.sbt.home.dto.Ingredient;
+import ru.sbt.home.dto.Recipe;
+import ru.sbt.home.services.IngredientService;
+import ru.sbt.home.services.RecipeService;
+import ru.sbt.home.view.base.BaseController;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Окно для редактирования рецепта
@@ -28,7 +28,8 @@ import java.util.List;
  * @author Trotsenko Konstantin
  * @version 1.0
  */
-public class SearchControllerRedactor extends Application {
+@Component
+public class SearchControllerRedactor extends BaseController {
     @FXML
     private Label lblRecipeDescription;
     @FXML
@@ -60,8 +61,6 @@ public class SearchControllerRedactor extends Application {
     private TextField txtDescription;
 
     @FXML
-    private RadioButton rbtnAdd;
-    @FXML
     private RadioButton rbtnAddNew;
     @FXML
     private RadioButton rbtnUpdateIngredient;
@@ -73,90 +72,106 @@ public class SearchControllerRedactor extends Application {
     private RadioButton rbtnDelete;
 
     @FXML
-    private Button btnStart;
-
+    private TableView<Ingredient> tableRecipe;
     @FXML
-    private ComboBox cbIngredients;
-
+    private TableColumn<Ingredient, Integer> idColumn;
     @FXML
-    private TableView<CookbookSheetSimple> tableRecipe;
+    private TableColumn<Ingredient, String> ingredientColumn;
     @FXML
-    private TableColumn<CookbookSheetSimple, Integer> idColumn;
+    private TableColumn<Ingredient, String> countColumn;
     @FXML
-    private TableColumn<CookbookSheetSimple, String> ingredientColumn;
-    @FXML
-    private TableColumn<CookbookSheetSimple, String> countColumn;
-    @FXML
-    private TableColumn<CookbookSheetSimple, String> unitColumn;
-
+    private TableColumn<Ingredient, String> unitColumn;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SearchControllerRedactor.class);
-    private ObservableList<CookbookSheetSimple> cookbookData = FXCollections.observableArrayList();
-    private List<CookbookSheetSimple> cookbookSheetSimple;
+    private IngredientService ingredientService;
+    private RecipeService recipeService;
+    private ObservableList<Ingredient> recipeData = FXCollections.observableArrayList();
+    private Map<Recipe, List<Ingredient>> recipeWithIngredients;
+    private List<Ingredient> ingredients;
+    private Recipe recipe;
     private Integer id;
-    private String recipeName;
-    private String recipeDescription;
 
-    private AnnotationConfigApplicationContext context =
-            new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
-    private Dao dao = context.getBean(Dao.class);
-
-    public void setValue(Integer idFrom) {
-        id = idFrom;
-        initialize();
+    @Autowired
+    public SearchControllerRedactor(IngredientService ingredientService, RecipeService recipeService) {
+        this.ingredientService = ingredientService;
+        this.recipeService = recipeService;
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
     }
 
+    /**
+     * Метод для передачи id из окна поиска
+     *
+     * @param idFrom id из окна поиска
+     */
+    void setValue(Integer idFrom) {
+        id = idFrom;
+        initialize();
+    }
+
     private void initialize() {
         initData();
         // устанавливаем тип и значение которое должно хранится в колонке
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("ingredientId"));
-        ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("ingredientName"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        ingredientColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         countColumn.setCellValueFactory(new PropertyValueFactory<>("countIngredient"));
         unitColumn.setCellValueFactory(new PropertyValueFactory<>("unitIngredient"));
         // заполняем таблицу данными
-        tableRecipe.setItems(cookbookData);
+        tableRecipe.setItems(recipeData);
     }
+
     // подготавливаем данные для таблицы
     private void initData() {
-        cookbookData.clear();
-        cookbookSheetSimple = dao.getCookbookSheetWithRecipeId(id);
-        if (cookbookSheetSimple != null) {
-            for (CookbookSheetSimple sheetSimple : cookbookSheetSimple) {
-                cookbookData.add(sheetSimple);
-            }
-            recipeName = cookbookSheetSimple.get(0).getRecipeName();
-            recipeDescription = cookbookSheetSimple.get(0).getRecipeDescription();
-            lblRecipeName.setText(recipeName);
-            lblRecipeDescription.setText(recipeDescription);
+        recipeData.clear();
+        recipeWithIngredients = ingredientService.getRecipeWithIngredientsByRecipeId(id);
+        Map.Entry<Recipe, List<Ingredient>> entry = recipeWithIngredients.entrySet().iterator().next();
+        recipe = entry.getKey();
+        ingredients = entry.getValue();
+        if (recipe != null && ingredients != null) {
+            recipeData.addAll(ingredients);
+            lblRecipeName.setText(recipe.getRecipe());
+            lblRecipeDescription.setText(recipe.getDescription());
         }
     }
 
     /**
      * Обработчик кнопки "Выполнить"
-     *
-     * @param event
-     * @throws IOException
      */
     public void start(ActionEvent event) throws IOException {
         if (rbtnUpdateName.isSelected()) {
             String newName = txtName.getText().trim();
-            dao.updateRecipeName(id, newName);
-            initialize();
+            if (!newName.equals("")) {
+                recipeService.updateRecipeName(id, newName);
+                initialize();
+            } else {
+                message("Заполните поле");
+            }
         }
         if (rbtnUpdateDescription.isSelected()) {
             String newDescription = txtDescription.getText().trim();
-            dao.updateRecipeDescription(id, newDescription);
-            initialize();
+            if (!newDescription.equals("")) {
+                recipeService.updateRecipeDescription(id, newDescription);
+                initialize();
+            } else {
+                message("Заполните поле");
+            }
+
         }
         if (rbtnDelete.isSelected()) {
-            if (cookbookSheetSimple.size() > 1) {
+            if (ingredients.size() > 1) {
                 String ingredientId = txtId.getText().trim();
-                dao.deleteIngredientFromCookbook(id, ingredientId);
-                initialize();
+                if (!ingredientId.equals("")) {
+                    if (ingredientHasAlready(Integer.parseInt(ingredientId))) {
+                        ingredientService.deleteIngredientFromCookbook(id, ingredientId);
+                        initialize();
+                    } else {
+                        message("В данном рецепте нет ингредиента с таким id");
+                    }
+                } else {
+                    message("Заполните поле");
+                }
             } else {
                 message("В рецепте должен быть хоть один ингредиент");
             }
@@ -165,38 +180,58 @@ public class SearchControllerRedactor extends Application {
             String ingredientName = txtIngredient.getText().trim();
             String ingredientCount = txtCount.getText().trim();
             String ingredientUnit = txtUnit.getText().trim();
-            Integer sameIngredientInDbId = dao.findIngredientByName(ingredientName);
-            if (sameIngredientInDbId == null) {
-                Integer newIngredientId = dao.createNewIngredient(ingredientName);
-                dao.createNewIngredientToCookbook(id, newIngredientId, ingredientCount, ingredientUnit);
-                initialize();
-            } else {
-                if (!ingredientHasAlready(sameIngredientInDbId)) {
-                    dao.createNewIngredientToCookbook(id, sameIngredientInDbId, ingredientCount, ingredientUnit);
+            if (!ingredientName.equals("") && !ingredientCount.equals("") && !ingredientUnit.equals("")) {
+                Integer sameIngredientInDbId = ingredientService.findIngredientByName(ingredientName);
+                if (sameIngredientInDbId == null) {
+                    ingredientService.createNewIngredientToCookbookNewId(id, ingredientName, ingredientCount, ingredientUnit);
                     initialize();
-
                 } else {
-                    message("Такой инредиент уже у вас есть, обновите его");
+                    if (!ingredientHasAlready(sameIngredientInDbId)) {
+                        ingredientService.createNewIngredientToCookbook(id, sameIngredientInDbId, ingredientCount, ingredientUnit);
+                        initialize();
+
+                    } else {
+                        message("Такой инредиент уже у вас есть, обновите его");
+                    }
                 }
+            } else {
+                message("Заполните все поля");
             }
         }
         if (rbtnUpdateIngredient.isSelected()) {
             String ingredientId = txtId.getText().trim();
             String ingredientCount = txtCount.getText().trim();
             String ingredientUnit = txtUnit.getText().trim();
-            dao.updateIngredientInCookbook(ingredientId, ingredientCount, ingredientUnit);
-            initialize();
+            if (!ingredientId.equals("") && !ingredientCount.equals("") && !ingredientUnit.equals("")) {
+                if (ingredientHasAlready(Integer.parseInt(ingredientId))) {
+                    ingredientService.updateIngredientInCookbook(ingredientId, ingredientCount, ingredientUnit);
+                    initialize();
+                } else {
+                    message("В данном рецепте нет ингредиента с таким id");
+                }
+            } else {
+                message("Заполните все поля");
+            }
         }
     }
 
     /**
-     * Метод проверяет наличие инрелиента в списке
-     * @param sameIngredientInDbId
-     * @return
+     * Обработчик кнопки "Назад"
+     */
+    public void back(ActionEvent event) throws IOException {
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+        createWindow("/Search.fxml", "Поиск рецептов");
+    }
+
+    /**
+     * Метод проверяет наличие инредиента в списке
+     *
+     * @param sameIngredientInDbId id ингредиента
+     * @return true если уже имееться
      */
     private boolean ingredientHasAlready(Integer sameIngredientInDbId) {
-        for (CookbookSheetSimple sheetSimple : cookbookSheetSimple) {
-            if (sheetSimple.getIngredientId() == sameIngredientInDbId) {
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient.getId() == sameIngredientInDbId) {
                 return true;
             }
         }
@@ -205,9 +240,6 @@ public class SearchControllerRedactor extends Application {
 
     /**
      * Обработчик RadioButton Добавить ингредиент
-     *
-     * @param event
-     * @throws IOException
      */
     public void addIngredient(ActionEvent event) throws IOException {
         radioButtonController(new boolean[]{true, false, false, false, false, false, false, false, true, true, true,
@@ -216,9 +248,6 @@ public class SearchControllerRedactor extends Application {
 
     /**
      * Обработчик RadioButton Добавить новый ингредиент
-     *
-     * @param event
-     * @throws IOException
      */
     public void addNewIngredient(ActionEvent event) throws IOException {
         radioButtonController(new boolean[]{false, true, false, false, false, false, false, true, true, true, false,
@@ -227,9 +256,6 @@ public class SearchControllerRedactor extends Application {
 
     /**
      * Обработчик RadioButton Обновить ингредиент
-     *
-     * @param event
-     * @throws IOException
      */
     public void updateIngredient(ActionEvent event) throws IOException {
         radioButtonController(new boolean[]{false, false, true, false, false, false, true, false, true, true, false,
@@ -238,9 +264,6 @@ public class SearchControllerRedactor extends Application {
 
     /**
      * Обработчик RadioButton Обновить описание
-     *
-     * @param event
-     * @throws IOException
      */
     public void updateDescription(ActionEvent event) throws IOException {
         radioButtonController(new boolean[]{false, false, false, true, false, false, false, false, false, false, false,
@@ -249,9 +272,6 @@ public class SearchControllerRedactor extends Application {
 
     /**
      * Обработчик RadioButton Обновить название
-     *
-     * @param event
-     * @throws IOException
      */
     public void updateName(ActionEvent event) throws IOException {
         radioButtonController(new boolean[]{false, false, false, false, true, false, false, false, false, false, false,
@@ -260,31 +280,10 @@ public class SearchControllerRedactor extends Application {
 
     /**
      * Обработчик RadioButton Удалить
-     *
-     * @param event
-     * @throws IOException
      */
     public void deleteIngredient(ActionEvent event) throws IOException {
         radioButtonController(new boolean[]{false, false, false, false, false, true, true, false, false, false, false,
                 false, false});
-    }
-
-    /**
-     * Метод для вывода сообщения в новом окне
-     *
-     * @param message
-     * @throws IOException
-     */
-    private void message(String message) throws IOException {
-        Stage primaryStage = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        Pane root = loader.load(getClass().getResource("/Message.fxml").openStream());
-        Message resultController = loader.getController();
-        resultController.setResult(message);
-        primaryStage.setTitle("Warning!");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setResizable(false);
-        primaryStage.show();
     }
 
     /**
@@ -293,7 +292,6 @@ public class SearchControllerRedactor extends Application {
      * @param array с необходимыми настройками
      */
     private void radioButtonController(boolean[] array) {
-        //rbtnAdd.setSelected(array[0]);
         rbtnAddNew.setSelected(array[1]);
         rbtnUpdateIngredient.setSelected(array[2]);
         rbtnUpdateDescription.setSelected(array[3]);
@@ -307,7 +305,6 @@ public class SearchControllerRedactor extends Application {
         lblCount.setVisible(array[8]);
         txtUnit.setVisible(array[9]);
         lblUnit.setVisible(array[9]);
-        //cbIngredients.setVisible(array[10]);
         txtDescription.setVisible(array[11]);
         lblDescription.setVisible(array[11]);
         txtName.setVisible(array[12]);

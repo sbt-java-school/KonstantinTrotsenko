@@ -1,4 +1,4 @@
-package ru.sbt.home.view.textFields;
+package ru.sbt.home.view.base.textFields;
 
 import javafx.scene.control.TextField;
 
