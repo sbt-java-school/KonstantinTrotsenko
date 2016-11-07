@@ -20,7 +20,7 @@ public class DaoDemo {
 
     private final UserDao userDao;
     private static final Logger LOGGER = LoggerFactory.getLogger(DaoDemo.class);
-    private static final String DB = "jdbc:h2:C:/Users/Airo/IdeaProjects/SbtHome/home23/src/database/app";
+    private static final String DB = "jdbc:h2:./home23/src/database/app";
 
     public DaoDemo() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(DB);

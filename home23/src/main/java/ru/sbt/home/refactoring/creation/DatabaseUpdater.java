@@ -22,7 +22,7 @@ public class DatabaseUpdater {
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseUpdater.class);
 
     public static void main(String[] args) throws Exception {
-        new DatabaseUpdater().executeScript("C:/Users/Airo/IdeaProjects/SbtHome/home23/src/main/sql/user.sql");
+        new DatabaseUpdater().executeScript("home23/src/main/sql/user.sql");
     }
 
     public void executeScript(String fileName) {
@@ -38,7 +38,7 @@ public class DatabaseUpdater {
 
     private void executeSql(String sql) throws SQLException {
         try (Connection connection =
-                     DriverManager.getConnection("jdbc:h2:C:/Users/Airo/IdeaProjects/SbtHome/home23/src/database/app");
+                     DriverManager.getConnection("jdbc:h2:./home23/src/database/app");
              Statement statement = connection.createStatement()) {
             boolean execute = statement.execute(sql);
             LOGGER.info("---------------------------------");
